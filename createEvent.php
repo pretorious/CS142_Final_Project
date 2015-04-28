@@ -1,4 +1,3 @@
-<? 
-	include top.php
-	include nav.php
+<?php 
+	include "top.php";
 ?>
