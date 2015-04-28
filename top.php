@@ -38,7 +38,7 @@
 		<?php
 			print "Snag - "; 
             if ($path_info['filename'] == "index")
-            { 
+            {
             	print "Events\n";
             }
             else if ($path_info['filename'] == "profile")
@@ -64,7 +64,7 @@
 		<link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" title="Main">
 	</head>
 	<body>
-		<?php 
-			include "header.php";
-			include "nav.php";
-		?>
+<?php 
+	include "header.php";
+	include "nav.php";
+?>
