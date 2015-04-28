@@ -10,4 +10,7 @@
 
 		<link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" title="Main">
 	</head>
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 1e06c9bdbea19fa323ac6ffef8965f1394816ea0
