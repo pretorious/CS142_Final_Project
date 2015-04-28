@@ -3,8 +3,6 @@
 ?>
 
 <?php
-include "top.php";
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1 Initialize variables
@@ -37,12 +35,8 @@ $yourURL = $domain . $phpSelf;
 // in the order they appear on the form
 $firstName = "";
 $lastName = "";
-$email = "plibby@uvm.edu";
-$gamingNews = "Yes";
-$channelUpdates = "Yes";
-$polls = "Yes";
-$radioYes = "";
-$radioNO = "";
+$email = "";
+
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1d form error flags
@@ -52,11 +46,7 @@ $radioNO = "";
 $firstNameERROR = false;
 $lastNameERROR = false;
 $emailERROR = false;
-$gamingNewsERROR = false;
-$channelUpdatesERROR = false;
-$pollsERROR = false;
-$radioYesERROR = false;
-$radioNoERROR = false;
+
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1e misc variables
@@ -99,17 +89,6 @@ if (isset($_POST["btnSubmit"])) {
     $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
     $dataRecord[] = $email;
 
-    $gamingNews = htmlentities($_POST["chkGamingNews"], ENT_QUOTES, "UTF-8");
-    $dataRecord[] = $gamingNews;
-    
-    $polls = htmlentities($_POST["chkPolls"], ENT_QUOTES, "UTF-8");
-    $dataRecord[] = $gamingNews;
-    
-    $radioYes = htmlentities($_POST["radioYes"], ENT_QUOTES, "UTF-8");
-    $dataRecord[] = $radioYes;
-    
-    $radioNo = htmlentities($_POST["radioNo"], ENT_QUOTES, "UTF-8");
-    $dataRecord[] = $radioNo;
     //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     //
     // SECTION: 2c Validation
@@ -214,11 +193,11 @@ if (isset($_POST["btnSubmit"])) {
         $to = $email; // the person who filled out the form
         $cc = "";
         $bcc = "";
-        $from = "Pretorious Gaming <noreply@pretoriousgaming.com>";
+        $from = "Snag Profile Setup <noreply@snagsocialmedia.com>";
 
         // subject of mail should make sense to your form
         $todaysDate = strftime("%x");
-        $subject = "Pretorious Gaming: Newsletter Signup " . $todaysDate;
+        $subject = "Snag Profile Setup " . $todaysDate;
 
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
         
@@ -364,8 +343,3 @@ if (isset($_POST["btnSubmit"])) {
 </article>
 
 <?php include "footer.php"; ?>
-
-
-<?php
-	include "footer.php";
-?>
