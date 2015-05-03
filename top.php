@@ -29,7 +29,7 @@
             // include all libraries
             //
             require_once('lib/security.php');
-            if ($path_info['filename'] == "form") {
+            if ($path_info['filename'] == "register" or $path_info['filename'] == "login") {
 	            include "lib/validation-functions.php";
 	            include "lib/mail-message.php";
             }
