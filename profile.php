@@ -58,7 +58,7 @@
 
 		    	$event = fgetcsv($file);
 
-		    	if($event[6] == $id){
+		    	if($event[5] == $verifiedUser[2]){
 
 		    		$verifiedEvent = $event;
 
