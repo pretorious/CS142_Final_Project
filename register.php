@@ -1,10 +1,6 @@
 <?php 
 	include "top.php";
 ?>
-<<<<<<< HEAD
-=======
-
->>>>>>> ead26be216d15663cd7122d0090fb4b0a6217136
 <?php
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -204,20 +200,7 @@ if (isset($_POST["btnSubmit"])) {
 
         $message = '<h2>Thank you signing up!</h2>';
 
-        
-        foreach ($_POST as $key => $value) {
-
-            
-            $message .= "<p>";
-
-            
-            $camelCase = preg_split('/(?=[A-Z])/', substr($key, 3));
-
-            foreach ($camelCase as $one) {
-                $message .= $one . " ";
-            }
-            $message .= " = " . htmlentities($value, ENT_QUOTES, "UTF-8") . "</p>";
-        }
+        $message .= "<p> If you wish to sign up, click on the following link: <a href='https://jdavis30.w3.uvm.edu/cs142/assignment7/verifyRegistration.php'>https://jdavis30.w3.uvm.edu/cs142/assignment7/verifyRegistration.php</a>";
 
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -278,17 +261,10 @@ if (isset($_POST["btnSubmit"])) {
             print "not ";
         }
 
-            print "been processed</h1>";
-
-        print "<p>A copy of this message has ";
-        if (!mailed) {
-            print "not ";
-        }
+        print "been processed</h1>";
+        print "<p>A message has ";
         print "been sent</p>";
-        print "<p>To: " . $email . "</p>";
-        print "<p>Mail Message:</p>";
-
-        print $message;
+        print "<p>To: " . $email . " Please check it to continue registration</p>";
     } else {
 
 
@@ -417,11 +393,6 @@ if (isset($_POST["btnSubmit"])) {
 
 </article>
 
-<<<<<<< HEAD
-
 <?php
 	include "footer.php";
 ?>
-=======
-<?php include "footer.php"; ?>
->>>>>>> ead26be216d15663cd7122d0090fb4b0a6217136
