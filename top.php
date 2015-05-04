@@ -39,7 +39,7 @@
         ?>
 		<title>
 		<?php
-			print "Snag - "; 
+			print "Snag - ";
             if ($path_info['filename'] == "index")
             {
             	print "Events\n";
