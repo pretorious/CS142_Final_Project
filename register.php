@@ -1,6 +1,10 @@
 <?php 
 	include "top.php";
 ?>
+<<<<<<< HEAD
+=======
+
+>>>>>>> ead26be216d15663cd7122d0090fb4b0a6217136
 <?php
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -8,16 +12,14 @@
 //
 // SECTION: 1a.
 // variables for the classroom purposes to help find errors.
-
 $debug = false;
 
 if (isset($_GET["debug"])) { //ONLY do this in a classroom environment
-    $debug = "true";
+    $debug = "false";
 }
     
 if ($debug)
     print "<p>DEBUG MODE IS ON</p>";
-
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
 // SECTION: 1b Security
@@ -34,6 +36,9 @@ $yourURL = $domain . $phpSelf;
 // in the order they appear on the form
 $firstName = "";
 $lastName = "";
+$username = "";
+$password = "";
+$passwordVerify = "";
 $email = "";
 
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
@@ -45,6 +50,8 @@ $email = "";
 $firstNameERROR = false;
 $lastNameERROR = false;
 $emailERROR = false;
+$usernameERROR = false;
+$passwordERROR = false;
 
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -84,6 +91,13 @@ if (isset($_POST["btnSubmit"])) {
 
     $lastName = htmlentities($_POST["txtLastName"], ENT_QUOTES, "UTF-8");
     $dataRecord[] = $lastName;
+
+    $username = htmlentities($_POST["txtUsername"], ENT_QUOTES, "UTF-8");
+    $dataRecord[] = $username;
+
+    $password = htmlentities($_POST["txtPassword"], ENT_QUOTES, "UTF-8");
+    $passwordVerify = htmlentities($_POST["txtPasswordVerify"], ENT_QUOTES, "UTF-8");
+    $dataRecord[] = $password;
     
     $email = filter_var($_POST["txtEmail"], FILTER_SANITIZE_EMAIL);
     $dataRecord[] = $email;
@@ -99,20 +113,39 @@ if (isset($_POST["btnSubmit"])) {
     // will be in the order they appear. errorMsg will be displayed on the form
     // see section 3b. The error flag ($emailERROR) will be used in section 3c.
 
-        if (firstName == "") {
+        if ($firstName == "") {
             $errorMsg[] = "Please enter your first name";
             $firstNameERROR = true;
         } elseif (!verifyAlphaNum($firstName)) {
-            $errorMsg[] = "Your first name  appears to have an extra character.";
+            $errorMsg[] = "Your first name  appears to have extra character or more.";
             $firstNameERROR = true;
         }    
         
-        if (lastName == "") {
+        if ($lastName == "") {
             $errorMsg[] = "Please enter your last name";
             $lastNameERROR = true;
         } elseif (!verifyAlphaNum($lastName)) {
-            $errorMsg[] = "Your last name  appears to have an extra character.";
+            $errorMsg[] = "Your last name  appears to have an extra character or more.";
             $lastNameERROR = true;
+        }
+
+        if ($username == "") {
+            $errorMsg[] = "Please enter your username";
+            $usernameERROR = true;
+        } elseif (!verifyAlphaNum($username)) {
+            $errorMsg[] = "Your username  appears to have extra character or more.";
+            $usernameERROR = true;
+        }    
+
+        if ($password == "") {
+            $errorMsg[] = "Please enter your first name";
+            $passwordERROR = true;
+        } elseif (!verifyAlphaNum($password)) {
+            $errorMsg[] = "Your password appears to have an extra character or more.";
+            $passwordERROR = true;
+        }elseif ($password != $passwordVerify) {
+            $errorMsg[] = "Your passwords do not match.";
+            $passwordERROR = true;
         }
         
         if ($email == "") {
@@ -139,6 +172,10 @@ if (isset($_POST["btnSubmit"])) {
         // SECTION: 2e Save Data
         //
         // This block saves the data to a CSV file
+
+        $ID = uniqid();
+
+        $dataRecord[] = $ID;
 
         $fileExt = ".csv";
 
@@ -199,7 +236,19 @@ if (isset($_POST["btnSubmit"])) {
         $subject = "Snag Profile Setup " . $todaysDate;
 
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
-        
+
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        //
+        // SECTION: 2h Cookie Data
+        //
+        // This block saves the data to a cookie
+
+        $cookie_name = "registerSnag";
+
+        $cookie_value = $dataRecord[count($dataRecord) - 1];
+
+        setcookie($cookie_name, "".$cookie_value, time() + 3600, '/');
+
     } // end form is valid
     
 } // ends if form was submitted
@@ -302,7 +351,7 @@ if (isset($_POST["btnSubmit"])) {
                                    tabindex="100" maxlength="45" placeholder="Enter your first name"
                                    <?php if ($firstNameERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
-                                   autofocus>                       
+                                   autofocus>
                         </label>
                         
                         <label for="txtLastName" class="required">Last Name:
@@ -310,6 +359,33 @@ if (isset($_POST["btnSubmit"])) {
                                    value="<?php print $lastName; ?>" required="required"
                                    tabindex="100" maxlength="45" placeholder="Enter your last name"
                                    <?php if ($lastNameERROR) print 'class="mistake"'; ?>
+                                   onfocus="this.select()"
+                                   autofocus>                       
+                        </label>
+
+                        <label for="txtUsername" class="required">Username:
+                            <input type="text" id="txtUsername" name="txtUsername"
+                                   value="<?php print $username; ?>" required="required"
+                                   tabindex="100" maxlength="45" placeholder="Enter your username"
+                                   <?php if ($userameERROR) print 'class="mistake"'; ?>
+                                   onfocus="this.select()"
+                                   autofocus>                       
+                        </label>
+
+                        <label for="txtPassword" class="required">Password:
+                            <input type="password" id="txtPassword" name="txtPassword"
+                                   value="<?php print $password; ?>" required="required"
+                                   tabindex="100" maxlength="45" placeholder="Enter your password"
+                                   <?php if ($passwordERROR) print 'class="mistake"'; ?>
+                                   onfocus="this.select()"
+                                   autofocus> 
+                        </label>
+
+                        <label for="txtPasswordVerify" class="required">Re-enter Password:
+                            <input type="password" id="txtPasswordVerify" name="txtPasswordVerify"
+                                   value="<?php print $passwordVerify; ?>" required="required"
+                                   tabindex="100" maxlength="45" placeholder="Re-enter your password"
+                                   <?php if ($passwordERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
                                    autofocus>                       
                         </label>
@@ -341,7 +417,11 @@ if (isset($_POST["btnSubmit"])) {
 
 </article>
 
+<<<<<<< HEAD
 
 <?php
 	include "footer.php";
 ?>
+=======
+<?php include "footer.php"; ?>
+>>>>>>> ead26be216d15663cd7122d0090fb4b0a6217136

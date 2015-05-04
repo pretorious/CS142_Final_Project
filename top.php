@@ -29,7 +29,7 @@
             // include all libraries
             //
             require_once('lib/security.php');
-            if ($path_info['filename'] == "form") {
+            if ($path_info['filename'] == "register" or $path_info['filename'] == "login"  or $path_info['filename'] == "verifyRegistration") {
 	            include "lib/validation-functions.php";
 	            include "lib/mail-message.php";
             }
@@ -40,6 +40,18 @@
             if ($path_info['filename'] == "index")
             {
             	print "Events\n";
+            }
+            if ($path_info['filename'] == "register")
+            {
+                print "Registration\n";
+            }
+            if ($path_info['filename'] == "login")
+            {
+                print "Login\n";
+            }
+            if ($path_info['filename'] == "verifyRegistration")
+            {
+                print "Verification\n";
             }
             else if ($path_info['filename'] == "profile")
             {
