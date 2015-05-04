@@ -3,130 +3,39 @@
 ?>
 
 		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
-		</section>
-		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
-		</section>
-		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
-		</section>
-		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
-		</section>
-		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
-		</section>
-		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
-		</section>
-		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
-		</section>
-		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
-		</section>
-		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
-		</section>
-		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
-		</section>
-		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
-		</section>
-		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
-		</section>
-		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
-		</section>
-		<section>
-			<article>
-				<h3>Hangout at Lil' Thang's Crib!</h3>
-				<ul>
-					<li><h4>Come on and play some smash with Lil' Thang!</h4></li>
-					<li><h4>123 Dreary Lane, Burlington, VT at 5:00pm, November 5th, 2015</h4></li>
-				</ul>
-			</article>
+			<?php
+				$fileExt = ".csv";
+
+				$myFileName = "data/event";
+
+				$filename = $myFileName . $fileExt;
+
+				// now we just open the file to read
+
+				$file = fopen($filename, 'r');
+
+				while(!feof($file)){
+
+					print "<article>\n";
+
+					$event = fgetcsv($file);
+
+					print "<h3>" . $event[0] . "<h3>\n";
+					if(isset($_COOKIE["snagUser"])){
+						print "<h5>made by" . $_COOKIE["snagUser"] . "</h5>\n";
+					}else {
+						print "<h5>made by Anonymous</h5>";
+					}
+					print "<ul>\n";
+					print "<li><h4>" . $event[1] . "</h4></li>\n";
+					print "<li><h4>" . $event[2] . ", " . $event[3] . ", " . $event[4] . "</h4></li>\n";
+					print "</article>\n\n";
+				}
+
+				// close the file
+
+				fclose($file);
+			?>
 		</section>
 
 <?php

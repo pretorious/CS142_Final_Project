@@ -1,0 +1,25 @@
+/* Stylesheet for Snag
+Jasper Davis
+Preston Libby
+March 4th 10:30
+
+*/
+
+body{
+	background-color: #2B803E;
+}
+
+section{
+	background-color: #50A162;
+	width:80%;
+	display:inline-block;
+	margin: auto;
+}
+
+article{
+	background-color: #80C18E;
+	width:99%;
+	display:inline-block;
+	margin: auto;
+	border-bottom-color:black;
+}
