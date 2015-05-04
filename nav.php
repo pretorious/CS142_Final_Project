@@ -6,11 +6,6 @@
 					} else {
 						print "<li class=\"navigate\"><a class=\"menuLink\" href=\"index.php\">Events</a></li>\n";
 		            }
-		            if ($path_info['filename'] == "register") {
-		            	print "				<li class=\"activePage\">Register</li>\n";
-		            } else {
-		            	print "				<li class=\"navigate\"><a class=\"menuLink\" href=\"register.php\">Register</a></li>\n";
-		            }
 		            if(isset($_COOKIE["snagUser"])){
 			            if ($path_info['filename'] == "logout") {
 			            	print "				<li class=\"activePage \">Logout</li>\n";
@@ -37,6 +32,11 @@
 			            	print "				<li class=\"activePage \">Login</li>\n";
 			            } else {
 			            	print "				<li class=\"navigate\"><a class=\"menuLink\" href=\"login.php\">Login</a></li>\n";
+			            }
+			            if ($path_info['filename'] == "register") {
+			            	print "				<li class=\"activePage\">Register</li>\n";
+			            } else {
+			            	print "				<li class=\"navigate\"><a class=\"menuLink\" href=\"register.php\">Register</a></li>\n";
 			            }
 		            }
 	            ?>

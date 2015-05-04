@@ -22,7 +22,7 @@
 
 					print "<h3>" . $event[0] . "<h3>\n";
 					if(isset($_COOKIE["snagUser"])){
-						print "<h5>made by" . $_COOKIE["snagUser"] . "</h5>\n";
+						print "<h5>made by" . $_COOKIE[5] . "</h5>\n";
 					}else {
 						print "<h5>made by Anonymous</h5>";
 					}

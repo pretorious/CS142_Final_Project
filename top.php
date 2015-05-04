@@ -33,8 +33,8 @@
 	            include "lib/validation-functions.php";
 	            include "lib/mail-message.php";
             }
-            if($path_info['filename'] == "login" or $path_info['filename'] == "verifyRegistration" or $path_info['filename'] == "logout"){
-                <meta http-equiv="refresh" content="1"; url="https://jdavis30.w3.uvm.edu/cs142/assignment7/index.php" />
+            if($path_info['filename'] == "verifyRegistration" or $path_info['filename'] == "logout"){
+                print '<meta http-equiv="refresh" content="1;url=https://jdavis30.w3.uvm.edu/cs142/assignment7/" />\n';
             }
         ?>
 		<title>

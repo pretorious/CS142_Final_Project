@@ -148,7 +148,11 @@ if (isset($_POST["btnSubmit"])) {
         //
         // This block saves the data to a CSV file
 
-        $ID = uniqid();
+        if(isset($_COOKIE["snagUser"])){
+        	$ID = $_COOKIE["snagUser"];
+        }else{
+        	$ID = "Anonymous";
+        }
 
         $dataRecord[] = $ID;
 
@@ -263,7 +267,7 @@ if (isset($_POST["btnSubmit"])) {
                         <label for="txtDescription" class="required">Description:
                             <input type="text" id="txtDescription" name="txtDescription"
                                    value="<?php print $description; ?>" required="required"
-                                   tabindex="100" maxlength="45" placeholder="Enter your event description"
+                                   tabindex="101" placeholder="Enter your event description"
                                    <?php if ($descriptionERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
                                    autofocus>                       
@@ -272,7 +276,7 @@ if (isset($_POST["btnSubmit"])) {
                         <label for="txtLocation" class="required">Location:
                             <input type="text" id="txtLocation" name="txtLocation"
                                    value="<?php print $username; ?>" required="required"
-                                   tabindex="100" maxlength="45" placeholder="Enter a location"
+                                   tabindex="102" maxlength="80" placeholder="Enter a location"
                                    <?php if ($loacationERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
                                    autofocus>                       
@@ -281,7 +285,7 @@ if (isset($_POST["btnSubmit"])) {
                         <label for="txtTime" class="required">Time:
                             <input type="text" id="txtTime" name="txtTime"
                                    value="<?php print $time; ?>" required="required"
-                                   tabindex="100" maxlength="45" placeholder="Enter a time"
+                                   tabindex="103" maxlength="45" placeholder="Enter a time"
                                    <?php if ($timeERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
                                    autofocus> 
@@ -290,7 +294,7 @@ if (isset($_POST["btnSubmit"])) {
                         <label for="txtDate" class="required">Date:
                             <input type="text" id="txtDate" name="txtDate"
                                    value="<?php print $date; ?>" required="required"
-                                   tabindex="100" maxlength="45" placeholder="Enter a date"
+                                   tabindex="104" maxlength="45" placeholder="Enter a date"
                                    <?php if ($dateERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()" 
                                    >
