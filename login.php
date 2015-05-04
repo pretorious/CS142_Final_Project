@@ -142,32 +142,41 @@
 
 		fclose($file);
 
+		if(!$found){
+			$errorMsg[] = "You have no registered yet. please register";
+			$usernameERROR = true;
+		}
+		else{
+			if(!$password){
+				$errorMsg[] = "incorrect password for that username";
+				$usernameERROR = true;
+			}
+		}
+
+		//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		//
+		// SECTION: 2d Process Form - Passed Validation
+		//
+		// Process for when the form passes validation (the errorMsg array is empty)
+		//
+		if (!$errorMsg) {
+			if ($debug)
+				print "<P>Login is valid</p>";
+			//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+			//
+			// SECTION: 2h Cookie Data
+			//
+			// This block saves the data to a cookie
+
+			$cookie_name = "registerSnag";
+
+			$cookie_value = $dataRecord[2];
+
+			setcookie($cookie_name, "".$cookie_value, time() + 86400, '/');
+
+		} // end form is valid
+
 	}
-
-	    //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-	    //
-	    // SECTION: 2d Process Form - Passed Validation
-	    //
-	    // Process for when the form passes validation (the errorMsg array is empty)
-	    //
-	        if (!$errorMsg) { 
-	            if ($debug)
-	                print "<P>Login is valid</p>";
-		        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-		        //
-		        // SECTION: 2h Cookie Data
-		        //
-		        // This block saves the data to a cookie
-
-		        $cookie_name = "registerSnag";
-
-		        $cookie_value = $dataRecord[2];
-
-		        setcookie($cookie_name, "".$cookie_value, time() + 86400, '/');
-
-	    	} // end form is valid
-	    
-	} // ends if form was submitted
 
 	//#############################################################################
 	//
