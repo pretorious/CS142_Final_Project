@@ -12,7 +12,7 @@
 $debug = false;
 
 if (isset($_GET["debug"])) { //ONLY do this in a classroom environment
-    $debug = "true";
+    $debug = "false";
 }
     
 if ($debug)
@@ -33,6 +33,7 @@ $yourURL = $domain . $phpSelf;
 // in the order they appear on the form
 $firstName = "";
 $lastName = "";
+$username = "";
 $password = "";
 $passwordVerify = "";
 $email = "";
@@ -46,6 +47,7 @@ $email = "";
 $firstNameERROR = false;
 $lastNameERROR = false;
 $emailERROR = false;
+$usernameERROR = false;
 $passwordERROR = false;
 
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
@@ -57,8 +59,7 @@ $errorMsg = array();
 
 // array used to hold form values that will be written to a CSV file
 $dataRecord = array();
-if ($debug)
-    print "<p>arrays set </p>";
+
 $mailed=false; // have we mailed the information to the user?
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //
@@ -87,6 +88,9 @@ if (isset($_POST["btnSubmit"])) {
 
     $lastName = htmlentities($_POST["txtLastName"], ENT_QUOTES, "UTF-8");
     $dataRecord[] = $lastName;
+
+    $username = htmlentities($_POST["txtUsername"], ENT_QUOTES, "UTF-8");
+    $dataRecord[] = $username;
 
     $password = htmlentities($_POST["txtPassword"], ENT_QUOTES, "UTF-8");
     $passwordVerify = htmlentities($_POST["txtPasswordVerify"], ENT_QUOTES, "UTF-8");
@@ -121,6 +125,14 @@ if (isset($_POST["btnSubmit"])) {
             $errorMsg[] = "Your last name  appears to have an extra character or more.";
             $lastNameERROR = true;
         }
+
+        if ($username == "") {
+            $errorMsg[] = "Please enter your username";
+            $usernameERROR = true;
+        } elseif (!verifyAlphaNum($username)) {
+            $errorMsg[] = "Your username  appears to have extra character or more.";
+            $usernameERROR = true;
+        }    
 
         if ($password == "") {
             $errorMsg[] = "Please enter your first name";
@@ -157,6 +169,10 @@ if (isset($_POST["btnSubmit"])) {
         // SECTION: 2e Save Data
         //
         // This block saves the data to a CSV file
+
+        $ID = uniqid();
+
+        $dataRecord[] = $ID;
 
         $fileExt = ".csv";
 
@@ -217,7 +233,19 @@ if (isset($_POST["btnSubmit"])) {
         $subject = "Snag Profile Setup " . $todaysDate;
 
         $mailed = sendMail($to, $cc, $bcc, $from, $subject, $message);
-        
+
+        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        //
+        // SECTION: 2h Cookie Data
+        //
+        // This block saves the data to a cookie
+
+        $cookie_name = "registerSnag";
+
+        $cookie_value = $dataRecord[count($dataRecord) - 1];
+
+        setcookie($cookie_name, "".$cookie_value, time() + 3600, '/');
+
     } // end form is valid
     
 } // ends if form was submitted
@@ -328,6 +356,15 @@ if (isset($_POST["btnSubmit"])) {
                                    value="<?php print $lastName; ?>" required="required"
                                    tabindex="100" maxlength="45" placeholder="Enter your last name"
                                    <?php if ($lastNameERROR) print 'class="mistake"'; ?>
+                                   onfocus="this.select()"
+                                   autofocus>                       
+                        </label>
+
+                        <label for="txtUsername" class="required">Username:
+                            <input type="text" id="txtUsername" name="txtUsername"
+                                   value="<?php print $username; ?>" required="required"
+                                   tabindex="100" maxlength="45" placeholder="Enter your username"
+                                   <?php if ($userameERROR) print 'class="mistake"'; ?>
                                    onfocus="this.select()"
                                    autofocus>                       
                         </label>
