@@ -1,11 +1,6 @@
 <?php 
 	include "top.php";
 ?>
-<<<<<<< HEAD
-<?php
-	include "footer.php"
-=======
-
 <?php
 //%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
 //
@@ -346,14 +341,7 @@ if (isset($_POST["btnSubmit"])) {
 
 </article>
 
-<<<<<<< HEAD
-<?php include "footer.php"; ?>
-=======
-<?php include "footer.php"; ?>
-
 
 <?php
 	include "footer.php";
->>>>>>> PrestonDev
 ?>
->>>>>>> 75e18a81cb7519ea73917202fceea0ed51f232e4
