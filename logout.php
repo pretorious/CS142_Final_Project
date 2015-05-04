@@ -12,12 +12,10 @@
 	<article id="main">
 
 	    <?php
-	    	if ($verify == true) {
-
-		    	print "you have been logged out";
-
-		    }
+		    print "<h2>you have been logged out</h2>";
 		?>
 
 	</article>
-<?php include "footer.php"; ?>
+<?php
+	include "footer.php"; 
+?>

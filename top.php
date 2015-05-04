@@ -29,17 +29,20 @@
             // include all libraries
             //
             require_once('lib/security.php');
-            if ($path_info['filename'] == "register" or $path_info['filename'] == "login"  or $path_info['filename'] == "verifyRegistration") {
+            if ($path_info['filename'] == "register" or $path_info['filename'] == "login"  or $path_info['filename'] == "verifyRegistration" or $path_info['filename'] == "createEvent") {
 	            include "lib/validation-functions.php";
 	            include "lib/mail-message.php";
             }
-            if($path_info['filename'] == "verifyRegistration" or $path_info['filename'] == "logout"){
-                print '<meta http-equiv="refresh" content="1;url=https://jdavis30.w3.uvm.edu/cs142/assignment7/" />\n';
+            if( $path_info['filename'] == "verifyRegistration" or 
+                $path_info['filename'] == "logout" or 
+                ( $path_info['filename'] == "createEvent" and !isset($_COOKIE["snagUser"])) or 
+                ( $path_info['filename'] == "login" and isset($_POST["btnSubmit"]))){
+                print "<meta http-equiv='refresh' content='2; url=https://jdavis30.w3.uvm.edu/cs142/assignment7/' /> \n";
             }
         ?>
-		<title>
+<title>
 		<?php
-			print "Snag - ";
+			print "      Snag - ";
             if ($path_info['filename'] == "index")
             {
             	print "Events\n";
@@ -60,13 +63,17 @@
             {
             	print "Profile\n";
             }
+            elseif ($path_info['filename'] == "createEvent")
+            {
+                print "Captain an Event!\n";
+            }
             elseif ($path_info['filename'] == "settings")
             {
-            	print "Settings\n";
+            	print "ettings\n";
             }
             else
             {
-            	print "unknown page";
+            	print "unknown page\n";
             }
         ?>
         </title>
@@ -79,7 +86,11 @@
 		<link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" title="Main">
 	</head>
 	<body>
+        <div class="cap">
 <?php 
 	include "header.php";
 	include "nav.php";
 ?>
+        </div>
+        <section id="spacer">
+        </section>
