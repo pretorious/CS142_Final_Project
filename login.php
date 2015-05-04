@@ -203,7 +203,7 @@
 
 			$cookie_name = "snagUser";
 
-			$cookie_value = $dataRecord[1];
+			$cookie_value = $dataRecord[0];
 
 			setcookie($cookie_name, "".$cookie_value, time() + 86400, '/');
 

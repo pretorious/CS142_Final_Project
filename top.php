@@ -44,23 +44,23 @@
             {
             	print "Events\n";
             }
-            if ($path_info['filename'] == "register")
+            elseif ($path_info['filename'] == "register")
             {
                 print "Registration\n";
             }
-            if ($path_info['filename'] == "login")
+            elseif ($path_info['filename'] == "login")
             {
                 print "Login\n";
             }
-            if ($path_info['filename'] == "verifyRegistration")
+            elseif ($path_info['filename'] == "verifyRegistration")
             {
                 print "Verification\n";
             }
-            else if ($path_info['filename'] == "profile")
+            elseif ($path_info['filename'] == "profile")
             {
             	print "Profile\n";
             }
-            else if ($path_info['filename'] == "settings")
+            elseif ($path_info['filename'] == "settings")
             {
             	print "Settings\n";
             }
