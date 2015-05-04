@@ -20,12 +20,9 @@
 
 	    $file = fopen($filename, 'r');
 
-	    //write the forms informations
-	    $tally = 0;
-
 	    $verifiedUser = array();
 
-	    while(! feof($file)){
+	    while(!feof($file)){
 
 	    	$user = fgetcsv($file);
 
@@ -53,18 +50,15 @@
 
         $fileExt = ".csv";
 
-        $myFileName = "data/login";
+        $myFileName = "data/user";
 
         $filename = $myFileName . $fileExt;
-
-        if ($debug)
-            print "\n\n<p>filename is " . $filename;
 
         // now we just open the file to append
         $file = fopen($filename, 'a');
 
         //write the forms informations
-        fputcsv($file, $dataRecord);
+        fputcsv($file, $verifiedUser);
 
         // close the file
         fclose($file);
