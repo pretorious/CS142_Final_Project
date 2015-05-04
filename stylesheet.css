@@ -10,28 +10,34 @@ body {
     width:100%;
     display:inline-block;
     margin: auto;
+    margin-bottom:1em;
 }
 
-body section {
+body section#mainContent {
+    text-align:center;
+    width:100%;
     background-color: #2B823A;
-    padding-left: 1.2em;
-    padding-right: 40%;
+    padding: 1.2em;
     margin-top:17em;
 }
 
 body section article {
-    max-width: 60%;
-    background-color: #51A35F;
-    margin-bottom, margin-top:1.2em;
-    padding:1.2em;
-    border: thin solid black;
+    color:#00200A;
+    text-align:left;
+    display:block;
     margin:auto;
+    max-width: 50%;
+    background-color: #51A35F;
+    margin-bottom: 1.2em;
+    padding:1.2em;
+    border-radius:.8em;
 }
 /*---Main Nav Bar---*/
 div.cap{
     background-color: #6AA97D;
     width:100%;
     position:fixed;
+    padding:0;
 }
 nav#mainMenu{
     clear: both;

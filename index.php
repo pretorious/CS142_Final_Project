@@ -1,8 +1,6 @@
 <?php 
 	include "top.php";
 ?>
-
-		<section>
 		<h2 style="color : red;">Don't grade this yet. It isn't ready. wait until tomorrow!</h2>
 			<?php
 				$fileExt = ".csv";
@@ -36,7 +34,6 @@
 
 				fclose($file);
 			?>
-		</section>
 
 <?php
 	include "footer.php"

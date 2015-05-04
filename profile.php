@@ -1,7 +1,6 @@
 <?php 
 	include "top.php";
 ?>
-<section>
 	<?php
 
 		$verify = false;
@@ -58,9 +57,23 @@
 
 		    	$event = fgetcsv($file);
 
-		    	if($event[5] == $verifiedUser[2]){
+		    	if($event[5] == $verifiedUser[2] and $event[0] != ""){
 
 		    		$verifiedEvent = $event;
+
+		    		print "<article>";
+			
+					print "<h3>" . $event[0] . "<h3>\n";
+					
+					print "<h5>made by " . $event[5] . "</h5>\n";
+					
+					print "<ul>\n";
+					
+					print "<li><h4>" . $event[1] . "</h4></li>\n";
+					
+					print "<li><h4>" . $event[2] . ", " . $event[3] . ", " . $event[4] . "</h4></li>\n";
+					
+					print "</article>\n\n";
 
 		    	}
 
@@ -70,25 +83,10 @@
 
 			fclose($file);
 
-			print "<article>";
-			
-			print "<h3>" . $event[0] . "<h3>\n";
-			
-			print "<h5>made by " . $event[5] . "</h5>\n";
-			
-			print "<ul>\n";
-			
-			print "<li><h4>" . $event[1] . "</h4></li>\n";
-			
-			print "<li><h4>" . $event[2] . ", " . $event[3] . ", " . $event[4] . "</h4></li>\n";
-			
-			print "</article>\n\n";
-
 		}else{
 			print "<h2>How did you get in here? go log in!</h2>";
 		}
 	?>
-</section>
 <?php
 	include "footer.php"
 ?>
