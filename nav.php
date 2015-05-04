@@ -1,4 +1,4 @@
-		<nav>
+<nav id="mainMenu">
 			<ul>
 				<?php
 					if ($path_info['filename'] == "index") {
