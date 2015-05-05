@@ -1,0 +1,34 @@
+html{
+    background-image: url("https://plibby.w3.uvm.edu/cs142/assignment7/hex.png");
+}
+
+body{
+    background-color: #333333;
+    font-family: Verdana, sans-serif;
+    margin-left: 15%;
+    margin-right: 15%;
+    max-width: 70%;
+    padding: 2em;
+    border: thick solid white;
+}
+
+h1,h2,h3,p,ul{
+    color: white;
+}
+
+.videos{
+    list-style: none;
+}
+
+ul a:link{
+    font-weight: bold;
+    color: white;
+}
+
+ul a:visited{
+    color:silver;
+}
+
+ul a:hover{
+    font-weight: bolder;
+}
