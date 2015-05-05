@@ -1,7 +1,6 @@
 <?php 
 	include "top.php";
 ?>
-		<h2 style="color : red;">Don't grade this yet. It isn't ready. wait until tomorrow!</h2>
 			<?php
 				$fileExt = ".csv";
 
