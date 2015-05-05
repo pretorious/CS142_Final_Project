@@ -200,7 +200,7 @@ if (isset($_POST["btnSubmit"])) {
 
         $message = '<h2>Thank you signing up!</h2>';
 
-        $message .= "<p> If you wish to sign up, click on the following link: <a href='https://jdavis30.w3.uvm.edu/cs142/assignment7/verifyRegistration.php'>https://jdavis30.w3.uvm.edu/cs142/assignment7/verifyRegistration.php</a>";
+        $message .= "<p> If you wish to sign up, click on the following link: <a href='https://plibby.w3.uvm.edu/cs142/assignment7/verifyRegistration.php'>https://plibby.w3.uvm.edu/cs142/assignment7/verifyRegistration.php</a>";
 
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

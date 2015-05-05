@@ -37,7 +37,7 @@
                 $path_info['filename'] == "logout" or 
                 ( $path_info['filename'] == "createEvent" and !isset($_COOKIE["snagUser"])) or 
                 ( $path_info['filename'] == "login" and isset($_POST["btnSubmit"]))){
-                print "<meta http-equiv='refresh' content='2; url=https://jdavis30.w3.uvm.edu/cs142/assignment7/' /> \n";
+                print "<meta http-equiv='refresh' content='2; url=https://plibby.w3.uvm.edu/cs142/assignment7/' /> \n";
             }
         ?>
 <title>
@@ -78,7 +78,7 @@
         ?>
         </title>
 		<meta charset="utf-8">
-		<meta name="authors" content="Preston Libby, Jasper Davis">
+		<meta name="author" content="Preston Libby, Jasper Davis">
 		<meta name="description" content="Snag Social Media Site, Helping Connect UVM Students
 											to events and interests all over campus.">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
